@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Movie Recommendation</title>
+
+
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/bootstrap.min.css') }}">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/font-awesome.min.css') }}">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/magnific-popup.css') }}">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+ 
+
+ </body>
+        <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+<div class="container">
+  <h2>Fill form and click submit for result.</h2>
+  <form  action="" method="post" role="form">
+    <div class="form-group">
+      <label for="movie">Enter Movie Name: </label>
+      <input type="text" class="form-control" id="mname" name="mname" placeholder="Movie Name?">
+    </div>
+    <button type="submit" class="btn btn-success">Submit!</button>
+  </form>
+ 
+  <br>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+ 
+        {% for message in messages %}
+            {% if "Error" not in message[1]: %}
+                <div class="alert alert-info">
+                <strong>...</strong>{{ message[1] }}
+                </div>
+            {% endif %}
+ 
+            {% if "Error" in message[1]: %}
+                <div class="alert alert-warning">
+                {{ message[1] }}
+                </div>
+            {% endif %}
+        {% endfor %}
+            {% endif %}
+        {% endwith %}
+ 
+</div>
+</br>            
+</div>
+</div>
+</body>
+</html>
